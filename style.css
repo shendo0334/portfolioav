@@ -1,0 +1,325 @@
+:root {
+    --color-surface-white: #ffffff;
+    --light: #f4f4f4;
+    --bg-gradient: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0.7) 100%);
+    --accent: #5e6ad2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    color: var(--light);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    background-color: #050505;
+}
+
+a {
+    color: var(--color-surface-white);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    width: 100%;
+    z-index: 99;
+    height: 6em;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.75rem, 1.5vw, 1.1rem);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+header nav a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+section {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    visibility: hidden;
+}
+
+.outer,
+.inner {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Backgrounds mapping */
+.first .bg {
+    background-image: var(--bg-gradient), url('assets/portfolio_bg_1_1772512924825.png');
+}
+
+.second .bg {
+    background-image: var(--bg-gradient), url('assets/portfolio_bg_2_1772512945664.png');
+}
+
+.third .bg {
+    background-image: var(--bg-gradient), url('assets/portfolio_bg_3_1772512963269.png');
+}
+
+.fourth .bg {
+    background-image: var(--bg-gradient), url('https://images.unsplash.com/photo-1541334914170-eb55debbff28?q=80&w=2000&auto=format&fit=crop');
+    background-position: center bottom;
+}
+
+/* Content Design */
+.content-wrapper {
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 85%;
+    max-width: 1100px;
+}
+
+h2.section-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+    text-transform: none;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+.section-subheading {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+}
+
+.clip-text {
+    overflow: hidden;
+    display: block;
+}
+
+h2 * {
+    will-change: transform;
+}
+
+.anim-item {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* Specific Section Elements */
+
+/* Intro / Hero */
+.profile-container {
+    width: clamp(120px, 15vw, 200px);
+    height: clamp(120px, 15vw, 200px);
+    border-radius: 50%;
+    padding: 5px;
+    background: linear-gradient(135deg, var(--accent), #ff5e62);
+    margin-bottom: 0.5rem;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #000;
+}
+
+/* Resume Section */
+.resume-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    text-align: left;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .resume-grid {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.resume-col {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.resume-col h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.resume-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.resume-card .school {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+}
+
+.resume-card p {
+    font-size: 0.95rem;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.project-card {
+    flex: 1 1 250px;
+    max-width: 320px;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover img {
+    opacity: 1;
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    text-align: left;
+}
+
+.project-info h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.project-info p {
+    font-size: 0.85rem;
+    color: #bbb;
+}
+
+/* Footer / Contact */
+.footer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--color-surface-white);
+    color: #000;
+}
+
+.footer-copyright {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #888;
+}
